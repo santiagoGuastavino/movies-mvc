@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
 }
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -11,9 +12,29 @@ body {
 a {
   color: #00B7FF;
 }
+
 img{
   width: 100%;
 }
+
 figure{
   width: 20%;
+  margin: 5% 0;
+}
+
+h1 {
+  margin: 2% 0;
+}
+
+p {
+  padding: 5px 0;
+}
+
+li {
+  display: block;
+  padding: 5px 0;
+}
+
+.box-me {
+  box-shadow: 0 0 2px black;
 }

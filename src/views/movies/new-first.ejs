@@ -1,0 +1,25 @@
+<%- include ('../partials/head') %>
+<%- include ('../partials/go-home') %>
+<body>
+    <figure>
+        <img src="/img/logo-DH.png" alt="Logo Digital House">
+    </figure>
+    <h1>
+        PELIÍCULAS ORDENADAS: MÁS NUEVAS PRIMERO
+    </h1>
+    <ul>
+        <% for( let i = 0; i < movies.length; i++ ) { %>
+            <div class="box-me">
+                <li>
+                    <a href="/movies/detail/<%=movies[i].id%>">
+                        <%= movies[i].title %>
+                    </a>
+                </li>
+                <li>
+                    <%= 'RELEASE DATE: ' + movies[i].releaseDate %> 
+                </li>
+            </div>
+        <% } %>
+    </ul>
+</body>
+</html>
