@@ -27,15 +27,34 @@ let moviesController = {
         });
     },
 
-    newFirst: (req,res) => {
+    newest: (req,res) => {
         db.movies.findAll({
             order: [
                 ['releaseDate', 'DESC']
-            ]
+            ],
+            limit: 5
         })
         .then(movies => {
-            res.render('./movies/new-first', {
-                title: 'Películas ordenas por fecha',
+            res.render('./movies/newest', {
+                title: 'Películas más nuevas',
+                movies
+            })
+        })
+        .catch(err => {
+            res.send(err)
+        });
+    },
+
+    recommended: (req,res) => {
+        db.movies.findAll({
+            order: [
+                ['rating', 'DESC']
+            ],
+            limit: 5
+        })
+        .then(movies => {
+            res.render('./movies/recommended', {
+                title: 'Peliculas recomendadas',
                 movies
             })
         })

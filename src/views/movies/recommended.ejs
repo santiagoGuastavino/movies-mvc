@@ -1,11 +1,11 @@
 <%- include ('../partials/head') %>
-<%- include ('../partials/go-home') %>
 <body>
+    <%- include ('../partials/go-home') %>
     <figure>
-        <img src="/img/logo-DH.png" alt="Logo Digital House">
+        <img src="/img/tomato.png" alt="Logo Digital House">
     </figure>
     <h1>
-        PELIÍCULAS ORDENADAS: MÁS NUEVAS PRIMERO
+        PELÍCULAS RECOMENDADAS
     </h1>
     <ul>
         <% for( let i = 0; i < movies.length; i++ ) { %>
@@ -16,7 +16,7 @@
                     </a>
                 </li>
                 <li>
-                    <%= 'RELEASE DATE: ' + movies[i].releaseDate %> 
+                    <%= 'RATING: ' + movies[i].rating %> 
                 </li>
             </div>
         <% } %>

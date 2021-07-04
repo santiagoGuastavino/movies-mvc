@@ -1,7 +1,7 @@
 <%- include ('./partials/head') %>
 <body>
   <figure>
-    <img src="/img/logo-DH.png">
+    <img src="/img/tomato.png">
   </figure>
   <h1>
     <%= title %>
@@ -13,16 +13,30 @@
     <li>
       Ir a:
     </li>
-    <li>
-      <a href="/movies">
-        Películas
-      </a>
-    </li>
-    <li>
-      <a href="/movies/new">
-        Nuevas primero
-      </a>
-    </li>
+    <div class="box-me">
+      <li>
+        <a href="/movies">
+          Películas
+        </a>
+      </li>
+      <li>
+        <a href="/movies/newest">
+          Películas más nuevas
+        </a>
+      </li>
+      <li>
+        <a href="/movies/recommended">
+          Películas recomendadas
+        </a>
+      </li>
+    </div>
+    <div class="box-me">
+      <li>
+        <a href="/genres">
+          Géneros
+        </a>
+      </li>
+    </div>
   </ul>
 </body>
 </html>

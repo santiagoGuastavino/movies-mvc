@@ -12,8 +12,10 @@ app.use(express.json());
 
 let mainRouter = require('./routes/main');
 let moviesRouter = require('./routes/movies');
+let genresRouter = require('./routes/genres');
 
 app.use('/', mainRouter);
 app.use('/movies', moviesRouter);
+app.use('/genres', genresRouter);
 
 app.listen(process.env.PORT || 3001, () => console.log('Server running: 3001'));
