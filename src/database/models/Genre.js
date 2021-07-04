@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    let alias = 'movies';
+    let alias = 'genres';
     let cols = {
         id: {
             autoIncrement: true,
@@ -9,36 +9,27 @@ module.exports = (sequelize, DataTypes) => {
         },
         createdAt: {
             type: DataTypes.DATE,
-            field: 'created_at'
+            field: 'creted_at'
         },
         updatedAt: {
             type: DataTypes.DATE,
             field: 'updated_at'
         },
-        title: {
-            type: DataTypes.STRING(500),
+        name: {
+            type: DataTypes.STRING(100),
             allowNull: false
         },
-        rating: {
-            type: DataTypes.DECIMAL(3,1).UNSIGNED,
-            allowNull: false
-        },
-        awards: {
+        ranking: {
             type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false
         },
-        releaseDate: {
-            type: DataTypes.DATE,
-            allowNull: false,
-            field: 'release_date'
-        },
-        length: {
-            type: DataTypes.INTEGER.UNSIGNED,
-            allowNull: true
+        active: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false
         }
     };
     let config = {
-        tableName: 'movies',
+        tablename: 'genres',
         timestamps: true,
         paranoid: false,
         charset: 'utf8',
@@ -46,6 +37,6 @@ module.exports = (sequelize, DataTypes) => {
             collate: 'utf8mb4_unicode:ci'
         }
     };
-    let Movie = sequelize.define(alias,cols,config);
-    return Movie;
+    let Genre = sequelize.define(alias,cols,config);
+    return Genre;
 };
