@@ -4,13 +4,13 @@ let genresController = {
     list: (req,res) => {
         db.genres.findAll()
         .then(genres => {
-            res.render('./genres/list', {
+            res.render('./genres/index', {
                 title: 'Listado de géneros',
                 genres
-            })
+            });
         })
         .catch(err => {
-            res.send(err)
+            res.send(err);
         });
     },
 
@@ -20,10 +20,10 @@ let genresController = {
             res.render('./genres/detail', {
                 title: genre.title,
                 genre
-            })
+            });
         })
         .catch(err => {
-            res.send(err)
+            res.send(err);
         });
     },
 };

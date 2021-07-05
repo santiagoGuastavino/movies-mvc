@@ -4,13 +4,13 @@ let moviesController = {
     list: (req,res) => {
         db.movies.findAll()
         .then(movies => {
-            res.render('./movies/list', {
+            res.render('./movies/index', {
                 title: 'Listado de Películas',
                 movies
             });
         })
         .catch(err => {
-            res.send(err)
+            res.send(err);
         });
     },
     
@@ -23,7 +23,7 @@ let moviesController = {
             });
         })
         .catch(err => {
-            res.send(err)
+            res.send(err);
         });
     },
 
@@ -38,10 +38,10 @@ let moviesController = {
             res.render('./movies/newest', {
                 title: 'Películas más nuevas',
                 movies
-            })
+            });
         })
         .catch(err => {
-            res.send(err)
+            res.send(err);
         });
     },
 
@@ -56,12 +56,12 @@ let moviesController = {
             res.render('./movies/recommended', {
                 title: 'Peliculas recomendadas',
                 movies
-            })
+            });
         })
         .catch(err => {
             res.send(err)
         });
     },
-}
+};
 
 module.exports = moviesController;

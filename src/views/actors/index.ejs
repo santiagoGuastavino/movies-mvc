@@ -1,0 +1,20 @@
+<%- include ('../partials/head') %>
+<body>
+    <%- include ('../partials/go-home') %>
+    <figure>
+        <img src="/img/tomato.png">
+    </figure>
+    <h1>
+        LISTADO DE ACTORES
+    </h1>
+    <ul>
+        <% for( let i = 0; i < actors.length; i++ ) { %>
+            <li>
+                <a href="/actors/detail/<%= actors[i].id %>">
+                    <%= actors[i].firstName %> <%= actors[i].lastName %>
+                </a>
+            </li>
+        <% } %>
+    </ul>
+</body>
+</html>
