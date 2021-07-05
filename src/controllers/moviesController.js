@@ -1,4 +1,5 @@
-let db = require('../database/models');
+let db = require('../database/models')
+let { validationResult } = require('express-validator');
 
 let moviesController = {
     list: (req,res) => {
@@ -60,6 +61,28 @@ let moviesController = {
         })
         .catch(err => {
             res.send(err)
+        });
+    },
+
+    create: (req,res) => {
+        res.render('./movies/create', {
+            title: 'Agregar película'
+        });
+    },
+
+    store: (req,res) => {
+        db.movies.create({
+            title: req.body.title,
+            rating: parseInt(req.body.rating),
+            awards: parseInt(req.body.awards),
+            releaseDate: req.body.releaseDate,
+            length: parseInt(req.body.lengt)
+        })
+        .then(() => {
+            res.redirect('/movies');
+        })
+        .catch(err => {
+            res.send(err);
         });
     },
 };

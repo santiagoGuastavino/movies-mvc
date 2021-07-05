@@ -1,0 +1,81 @@
+<%- include ('../partials/head') %>
+<body>
+    <%- include ('../partials/go-home') %>
+    <%- include ('../partials/go-back') %>
+    <figure>
+        <img src="/img/tomato.png">
+      </figure>
+    <h1 class="titulo">
+        Agregar película
+    </h1>
+    <section class="formulario">
+        <form action="/movies" method="POST">
+            <!-- title -->
+            <label for="title">
+                Title
+            </label>
+            <p>
+                <input
+                    type="text"
+                    name="title"
+                    id="title"
+                >
+            </p>
+            <!-- rating -->
+            <label for="rating">
+                Rating
+            </label>
+            <p>
+                <input
+                    type="text"
+                    name="rating"
+                    id="rating"
+                >
+            </p>
+            <!-- awards -->
+            <label for="awards">
+                Awards 
+            </label>
+            <p>
+                <input
+                    type="text"
+                    name="awards"
+                    id="awards"
+                >
+            </p>
+            <!-- releaseDate -->
+            <label for="releaseDate">
+                Release date
+            </label>
+            <p>
+                <input
+                    type="date"
+                    name="releaseDate"
+                    id="releaseDate"
+                    required
+                >
+            </p>
+            <!-- length -->
+            <label for="length">
+                Length
+            </label>
+            <p>
+                <input
+                    type="text"
+                    name="length"
+                    id="length"
+                    required
+                >
+            </p>
+            <p>
+                <button type="submit">
+                    Agregar
+                </button>
+                <a href="/movies">
+                    Listado de Películas
+                </a>
+            </p>
+        </form>
+    </section>
+</body>
+</html>
