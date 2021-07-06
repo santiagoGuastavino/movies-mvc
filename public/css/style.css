@@ -18,7 +18,7 @@ img{
 }
 
 figure{
-  width: 20%;
+  width: 100%;
   margin: 5% 0;
 }
 
@@ -35,12 +35,67 @@ li {
   padding: 5px 0;
 }
 
+.body-box {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.img-box {
+  width: 20%;
+}
+
+.content-box {
+  flex-grow: 3;
+  padding-left: 2%;
+}
+
 .box-me {
   box-shadow: 0 0 2px black;
   width: 25%;
   padding: 1% 1%;
+  margin: 1% 0;
 }
 
-.go-home {
+.navigation {
+  width: 100%;
+}
+
+.submit-button {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: inherit;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 2px black;
+  padding: 1.5%;
+}
+
+.submit-button:hover {
+  text-decoration: underline;
+  color: navy;
+  box-shadow: inset 0 0 5px black;
+}
+
+.error-msg {
   display: block;
+  color: red;
+}
+
+.error-input {
+  border: 1px red solid;
+}
+
+.error-input:focus {
+  outline: red;
+}
+
+.cool-link {
+  color: inherit;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.cool-link:hover {
+  color: navy;
+  text-decoration: underline;
+  font-style: italic;
 }

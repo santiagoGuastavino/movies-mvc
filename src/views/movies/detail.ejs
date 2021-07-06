@@ -1,24 +1,30 @@
 <%- include('../partials/head') %>
-<body>
-    <%- include ('../partials/go-home') %>
-    <%- include ('../partials/go-back') %>
-    <figure>
-        <img src="/img/tomato.png">
-    </figure>
-    <h1>
-        <%= movie.title %>
-    </h1>
-    <p>
-        RATING: <%= movie.rating %>
-    </p>
-    <p>
-        AWARDS: <%= movie.awards %>
-    </p>
-    <p>
-        LENGTH: <%= movie.length + ' min'%>
-    </p>
-    <p>
-        RELEASE DATE: <%= movie.releaseDate %>
-    </p>
+<body class="body-box">
+    <div class="img-box">
+        <div class="box-me navigation">
+            <%- include ('../partials/go-home') %>
+            <%- include ('../partials/go-back') %>
+        </div>
+        <figure>
+            <img src="/img/tomato.png">
+        </figure>
+    </div>
+    <div class="content-box">
+        <h1>
+            <%= movie.title %>
+        </h1>
+        <p>
+            RATING: <%= movie.rating %>
+        </p>
+        <p>
+            AWARDS: <%= movie.awards %>
+        </p>
+        <p>
+            LENGTH: <%= movie.length + ' min'%>
+        </p>
+        <p>
+            RELEASE DATE: <%= movie.releaseDate %>
+        </p>
+    </div>
 </body>
 </html>

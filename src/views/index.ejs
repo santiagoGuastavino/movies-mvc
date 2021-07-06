@@ -1,54 +1,58 @@
 <%- include ('./partials/head') %>
-<body>
-  <figure>
-    <img src="/img/tomato.png">
-  </figure>
-  <h1>
-    <%= title %>
-  </h1>
-  <p>
-    Bienvenidos a <%= title %>
-  </p>
-  <ul>
-    <li>
-      Ir a:
-    </li>
-    <div class="box-me">
+<body class="body-box">
+  <div class="img-box">
+    <figure>
+      <img src="/img/tomato.png">
+    </figure>
+  </div>
+  <div class="content-box">
+    <h1>
+      <%= title %>
+    </h1>
+    <p>
+      Bienvenidos a <%= title %>
+    </p>
+    <ul>
       <li>
-        <a href="/movies">
-          Películas
-        </a>
+        Ir a:
       </li>
-      <li>
-        <a href="/movies/newest">
-          Películas más nuevas
-        </a>
-      </li>
-      <li>
-        <a href="/movies/recommended">
-          Películas recomendadas
-        </a>
-      </li>
-      <li>
-        <a href="/movies/add">
-          Agregar una película
-        </a>
-      </li>
-    </div>
-    <div class="box-me">
-      <li>
-        <a href="/genres">
-          Géneros
-        </a>
-      </li>
-    </div>
-    <div class="box-me">
-      <li>
-        <a href="/actors">
-          Actores
-        </a>
-      </li>
-    </div>
-  </ul>
+      <div class="box-me">
+        <li>
+          <a class="cool-link" href="/movies">
+            Películas
+          </a>
+        </li>
+        <li>
+          <a class="cool-link" href="/movies/newest">
+            Películas más nuevas
+          </a>
+        </li>
+        <li>
+          <a class="cool-link" href="/movies/recommended">
+            Películas recomendadas
+          </a>
+        </li>
+        <li>
+          <a class="cool-link" href="/movies/add">
+            Agregar una película
+          </a>
+        </li>
+      </div>
+      <div class="box-me">
+        <li>
+          <a class="cool-link" href="/genres">
+            Géneros
+          </a>
+        </li>
+      </div>
+      <div class="box-me">
+        <li>
+          <a class="cool-link" href="/actors">
+            Actores
+          </a>
+        </li>
+      </div>
+    </ul>
+  </div>
 </body>
 </html>

@@ -1,26 +1,32 @@
 <%- include ('../partials/head') %>
-<body>
-    <%- include ('../partials/go-home') %>
-    <%- include ('../partials/go-back') %>
-    <figure>
-        <img src="/img/tomato.png">
-    </figure>
-    <h1>
-        PELIÍCULAS MÁS NUEVAS
-    </h1>
-    <ul>
-        <% for( let i = 0; i < movies.length; i++ ) { %>
-            <div class="box-me">
-                <li>
-                    <a href="/movies/detail/<%=movies[i].id%>">
-                        <%= movies[i].title %>
-                    </a>
-                </li>
-                <li>
-                    <%= 'RELEASE DATE: ' + movies[i].releaseDate %> 
-                </li>
-            </div>
-        <% } %>
-    </ul>
+<body class="body-box">
+    <div class="img-box">
+        <div class="box-me navigation">
+            <%- include ('../partials/go-home') %>
+            <%- include ('../partials/go-back') %>
+        </div>
+        <figure>
+            <img src="/img/tomato.png">
+        </figure>
+    </div>
+    <div class="content-box">
+        <h1>
+            PELIÍCULAS MÁS NUEVAS
+        </h1>
+        <ul>
+            <% for( let i = 0; i < movies.length; i++ ) { %>
+                <div class="box-me">
+                    <li>
+                        <a class="cool-link" href="/movies/detail/<%=movies[i].id%>">
+                            <%= movies[i].title %>
+                        </a>
+                    </li>
+                    <li>
+                        <%= 'RELEASE DATE: ' + movies[i].releaseDate %> 
+                    </li>
+                </div>
+            <% } %>
+        </ul>
+    </div>
 </body>
 </html>

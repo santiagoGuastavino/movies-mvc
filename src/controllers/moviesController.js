@@ -71,19 +71,29 @@ let moviesController = {
     },
 
     store: (req,res) => {
-        db.movies.create({
-            title: req.body.title,
-            rating: parseInt(req.body.rating),
-            awards: parseInt(req.body.awards),
-            releaseDate: req.body.releaseDate,
-            length: parseInt(req.body.lengt)
-        })
-        .then(() => {
-            res.redirect('/movies');
-        })
-        .catch(err => {
-            res.send(err);
-        });
+        let validations = validationResult(req);
+        let oldData = req.body;
+        if (validations.errors.length > 0) {
+            return res.render('./movies/create', {
+                title: 'Agregar película',
+                oldData,
+                errors: validations.mapped()
+            });
+        } else {
+            return db.movies.create({
+                title: req.body.title,
+                rating: parseInt(req.body.rating),
+                awards: parseInt(req.body.awards),
+                releaseDate: req.body.releaseDate,
+                length: parseInt(req.body.lengt)
+            })
+            .then(() => {
+                res.redirect('/movies');
+            })
+            .catch(err => {
+                res.send(err);
+            });
+        };
     },
 };
 

@@ -1,15 +1,21 @@
 <%- include ('../partials/head') %>
-<body>
-    <%- include ('../partials/go-home') %>
-    <%- include ('../partials/go-back') %>
-    <figure>
-        <img src="/img/tomato.png">
-    </figure>    
-    <h1>
-        <%= genre.name %>
-    </h1>
-    <p>
-        RANKIG: <%= genre.ranking %>
-    </p>
+<body class="body-box">
+    <div class="img-box">
+        <div class="box-me navigation">
+            <%- include ('../partials/go-home') %>
+            <%- include ('../partials/go-back') %>
+        </div>
+        <figure>
+            <img src="/img/tomato.png">
+        </figure>
+    </div>
+    <div class="content-box">
+        <h1>
+            <%= genre.name %>
+        </h1>
+        <p>
+            RANKIG: <%= genre.ranking %>
+        </p>
+    </div>
 </body>
 </html>

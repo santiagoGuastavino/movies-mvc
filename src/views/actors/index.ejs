@@ -1,21 +1,27 @@
 <%- include ('../partials/head') %>
-<body>
-    <%- include ('../partials/go-home') %>
-    <%- include ('../partials/go-back') %>
-    <figure>
-        <img src="/img/tomato.png">
-    </figure>
-    <h1>
-        LISTADO DE ACTORES
-    </h1>
-    <ul>
-        <% for( let i = 0; i < actors.length; i++ ) { %>
-            <li>
-                <a href="/actors/detail/<%= actors[i].id %>">
-                    <%= actors[i].firstName %> <%= actors[i].lastName %>
-                </a>
-            </li>
-        <% } %>
-    </ul>
+<body class="body-box">
+    <div class="img-box">
+        <div class="box-me navigation">
+            <%- include ('../partials/go-home') %>
+            <%- include ('../partials/go-back') %>
+        </div>
+        <figure>
+            <img src="/img/tomato.png">
+        </figure>
+    </div>
+    <div class="content-box">
+        <h1>
+            LISTADO DE ACTORES
+        </h1>
+        <ul>
+            <% for( let i = 0; i < actors.length; i++ ) { %>
+                <li>
+                    <a class="cool-link" href="/actors/detail/<%= actors[i].id %>">
+                        <%= actors[i].firstName %> <%= actors[i].lastName %>
+                    </a>
+                </li>
+            <% } %>
+        </ul>
+    </div>
 </body>
 </html>

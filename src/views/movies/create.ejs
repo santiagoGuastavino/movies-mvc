@@ -1,81 +1,132 @@
 <%- include ('../partials/head') %>
-<body>
-    <%- include ('../partials/go-home') %>
-    <%- include ('../partials/go-back') %>
-    <figure>
-        <img src="/img/tomato.png">
-      </figure>
-    <h1 class="titulo">
-        Agregar película
-    </h1>
-    <section class="formulario">
-        <form action="/movies" method="POST">
-            <!-- title -->
-            <label for="title">
-                Title
-            </label>
-            <p>
-                <input
-                    type="text"
-                    name="title"
-                    id="title"
-                >
-            </p>
-            <!-- rating -->
-            <label for="rating">
-                Rating
-            </label>
-            <p>
-                <input
-                    type="text"
-                    name="rating"
-                    id="rating"
-                >
-            </p>
-            <!-- awards -->
-            <label for="awards">
-                Awards 
-            </label>
-            <p>
-                <input
-                    type="text"
-                    name="awards"
-                    id="awards"
-                >
-            </p>
-            <!-- releaseDate -->
-            <label for="releaseDate">
-                Release date
-            </label>
-            <p>
-                <input
-                    type="date"
-                    name="releaseDate"
-                    id="releaseDate"
-                    required
-                >
-            </p>
-            <!-- length -->
-            <label for="length">
-                Length
-            </label>
-            <p>
-                <input
-                    type="text"
-                    name="length"
-                    id="length"
-                    required
-                >
-            </p>
-            <p>
-                <button type="submit">
-                    Agregar
-                </button>
-                <a href="/movies">
+<body class="body-box">
+    <div class="img-box">
+        <div class="box-me navigation">
+            <%- include ('../partials/go-home') %>
+            <%- include ('../partials/go-back') %>
+        </div>
+        <figure>
+            <img src="/img/tomato.png">
+        </figure>
+    </div>
+    <div class="content-box">
+        <h1 class="titulo" id="scroll-down">
+            Agregar película
+        </h1>
+        <section class="formulario">
+            <form action="/movies" method="POST">
+                <!-- title -->
+                <div class="box-me">
+                    <label for="title">
+                        Título
+                    </label>
+                    <p>
+                        <input
+                            class="<%= locals.errors && errors.title ? 'error-input' : null %>"
+                            type="text"
+                            name="title"
+                            id="title"
+                            value="<%= locals.oldData && oldData.title ? oldData.title : null %>"
+                        >
+                    </p>
+                    <% if (locals.errors && errors.title) { %>
+                        <span class="error-msg">
+                            <%= errors.title.msg %>
+                        </span>
+                    <% } %>
+                </div>
+                <!-- rating -->
+                <div class="box-me">
+                    <label for="rating">
+                        Rating
+                    </label>
+                    <p>
+                        <input
+                            class="<%= locals.errors && errors.rating ? 'error-input' : null %>"
+                            type="text"
+                            name="rating"
+                            id="rating"
+                            value="<%= locals.oldData && oldData.rating ? oldData.rating : null %>"
+                        >
+                    <% if (locals.errors && errors.rating) { %>
+                        <span class="error-msg">
+                            <%= errors.rating.msg %>
+                        </span>
+                    <% } %>
+                    </p>
+                </div>
+                <!-- awards -->
+                <div class="box-me">
+                    <label for="awards">
+                        Premios
+                    </label>
+                    <p>
+                        <input
+                            class="<%= locals.errors && errors.awards ? 'error-input' : null %>"
+                            type="text"
+                            name="awards"
+                            id="awards"
+                            value="<%= locals.oldData && oldData.awards ? oldData.awards : null %>"
+                        >
+                        <% if (locals.errors && errors.awards) { %>
+                            <span class="error-msg">
+                                <%= errors.awards.msg %>
+                            </span>
+                        <% } %>
+                    </p>
+                </div>
+                <!-- releaseDate -->
+                <div class="box-me">
+                    <label for="releaseDate">
+                        Fecha de estreno
+                    </label>
+                    <p>
+                        <input
+                            class="<%= locals.errors && errors.releaseDate ? 'error-input' : null %>"
+                            type="date"
+                            name="releaseDate"
+                            id="releaseDate"
+                            value="<%= locals.oldData && oldData.releaseDate ? oldData.releaseDate : null %>"
+                        >
+                        <% if (locals.errors && errors.releaseDate) { %>
+                            <span class="error-msg">
+                                <%= errors.releaseDate.msg %>
+                            </span>
+                        <% } %>
+                    </p>
+                </div>
+                <!-- length -->
+                <div class="box-me">
+                    <label for="length">
+                        Duración (minutos)
+                    </label>
+                    <p>
+                        <input
+                            class="<%= locals.errors && errors.length ? 'error-input' : null %>"
+                            type="text"
+                            name="length"
+                            id="length"
+                            value="<%= locals.oldData && oldData.length ? oldData.length : null %>"
+                        >
+                        <% if (locals.errors && errors.length) { %>
+                            <span class="error-msg">
+                                <%= errors.length.msg %>
+                            </span>
+                        <% } %>
+                    </p>
+                </div>
+                <div class="box-me">
+                    <p>
+                        <button class="submit-button" type="submit">
+                            Agregar
+                        </button>
+                    </p>
+                </div>
+                <a class="cool-link" href="/movies">
                     Listado de Películas
                 </a>
-            </p>
-        </form>
-    </section>
+            </form>
+        </section>
+    </div>
 </body>
 </html>

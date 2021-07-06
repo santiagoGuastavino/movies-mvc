@@ -1,17 +1,25 @@
 <%- include ('../partials/head') %>
-<body>
-    <%- include ('../partials/go-home') %>
-    <%- include ('../partials/go-back') %>
-    <figure>
-        <img src="/img/tomato.png">
-      </figure>
-    <h1>LISTADO DE GÉNEROS</h1>
-    <ul>
-        <% for( let i = 0; i < genres.length; i++ ) { %>
-        <li>
-            <a href="/genres/detail/<%= genres[i].id %>"><%= genres[i].name %></a>
-        </li>
-        <% } %>
-    </ul>
+<body class="body-box">
+    <div class="img-box">
+        <div class="box-me navigation">
+            <%- include ('../partials/go-home') %>
+            <%- include ('../partials/go-back') %>
+        </div>
+        <figure>
+            <img src="/img/tomato.png">
+          </figure>
+    </div>
+    <div class="content-box">
+        <h1>LISTADO DE GÉNEROS</h1>
+        <ul>
+            <% for( let i = 0; i < genres.length; i++ ) { %>
+                <li>
+                    <a class="cool-link" href="/genres/detail/<%= genres[i].id %>">
+                        <%= genres[i].name %>
+                    </a>
+                </li>
+            <% } %>
+        </ul>
+    </div>
 </body>
 </html>
