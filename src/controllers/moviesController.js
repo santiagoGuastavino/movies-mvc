@@ -1,5 +1,6 @@
 let db = require('../database/models')
 let { validationResult } = require('express-validator');
+const { response } = require('express');
 
 let moviesController = {
     list: (req,res) => {
@@ -94,6 +95,61 @@ let moviesController = {
                 res.send(err);
             });
         };
+    },
+
+    edit: (req,res) => {
+        db.movies.findByPk(req.params.id)
+        .then(movie => {
+            res.render('./movies/edit', {
+                title: 'Editar' + ' ' + movie.title,
+                movie
+            });
+        })
+        .catch(err => {
+            res.send(err);
+        });
+    },
+    
+    update: (req,res) => {
+        // let validations = validationResult(req);
+        // if (validations.errors.length > 0) {
+        //     return res.render('./movies/edit', {
+        //         title: 'Editar' + movie.title,
+        //         errors: validations.mapped()
+        //     });
+        // } else {
+            return db.movies.update({
+                title: req.body.title,
+                rating: req.body.rating,
+                awards: req.body.awards,
+                releaseDate: req.body.releaseDate,
+                length: req.body.length
+            }, {
+                where: {
+                    id: req.params.id
+                }
+            })
+            .then(() => {
+                res.redirect('/movies');
+            })
+            .catch(err => {
+                res.send(err);
+            });
+        // };
+    },
+
+    destroy: (req,res) => {
+        db.movies.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(() => {
+            res.redirect('/movies');
+        })
+        .catch(err => {
+            res.send(err);
+        });
     },
 };
 

@@ -10,21 +10,35 @@
         </figure>
     </div>
     <div class="content-box">
-        <h1>
-            <%= movie.title %>
-        </h1>
-        <p>
-            RATING: <%= movie.rating %>
-        </p>
-        <p>
-            AWARDS: <%= movie.awards %>
-        </p>
-        <p>
-            LENGTH: <%= movie.length + ' min'%>
-        </p>
-        <p>
-            RELEASE DATE: <%= movie.releaseDate %>
-        </p>
+        <div class="box-me">
+            <h1>
+                <%= movie.title %>
+            </h1>
+            <p>
+                RATING: <%= movie.rating %>
+            </p>
+            <p>
+                AWARDS: <%= movie.awards %>
+            </p>
+            <p>
+                LENGTH: <%= movie.length + ' min'%>
+            </p>
+            <p>
+                RELEASE DATE: <%= movie.releaseDate %>
+            </p>
+        </div>
+        <div class="box-me control-box">
+            <a class="cool-link control-link" href="/movies/edit/<%= movie.id %>">
+                Editar película
+            </a>
+            <form class="control-link" action="/movies/delete/<%= movie.id %>?_method=DELETE" method="POST">
+                <button class="remove-style">
+                    <p class="cool-link red-link">
+                        Eliminar película
+                    </p>
+                </button>
+            </form>
+        </div>
     </div>
 </body>
 </html>

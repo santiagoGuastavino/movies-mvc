@@ -6,9 +6,12 @@ let viewsPath = path.join(__dirname + '/views');
 app.set('view engine', 'ejs');
 app.set('views', viewsPath)
 
+let methodOverride = require('method-override');
+
 app.use(express.static('public'));
 app.use(express.urlencoded ( { extended: false } ));
 app.use(express.json());
+app.use(methodOverride('_method'));
 
 let mainRouter = require('./routes/main');
 let moviesRouter = require('./routes/movies');
