@@ -15,7 +15,19 @@
                 <%= actor.firstName %> <%= actor.lastName %>
             </h1>
             <p>
-                RATING: <%= actor.rating %>
+                Rating: <%= actor.rating %>
+            </p>
+            <p>
+                Trabajó en:
+                <ul>
+                    <% for (i = 0 ; i < actor.movies.length ; i++) { %>
+                        <a class="cool-link" href="/movies/detail/<%= actor.movies[i].id %>">
+                            <li class="indentate-me">
+                                <%= actor.movies[i].title %>
+                            </li>
+                        </a>
+                    <% } %>
+                </ul>
             </p>
         </div>
     </div>

@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    let alias = 'genres';
+    let alias = 'Genre';
     let cols = {
         id: {
             autoIncrement: true,
@@ -37,6 +37,17 @@ module.exports = (sequelize, DataTypes) => {
             collate: 'utf8mb4_unicode:ci'
         }
     };
-    let Genre = sequelize.define(alias,cols,config);
+    let Genre = sequelize.define(
+        alias,
+        cols,
+        config
+        );
+    Genre.associate = (model) => {
+        // each genre has many movies
+        Genre.hasMany(model.Movie, {
+            as: 'movies',
+            foreignKey: 'genre_id'
+        });
+    };
     return Genre;
 };

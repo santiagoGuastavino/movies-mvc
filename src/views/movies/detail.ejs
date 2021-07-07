@@ -15,16 +15,31 @@
                 <%= movie.title %>
             </h1>
             <p>
-                RATING: <%= movie.rating %>
+                Rating: <%= movie.rating %>
             </p>
             <p>
-                AWARDS: <%= movie.awards %>
+                Premios: <%= movie.awards %>
             </p>
             <p>
-                LENGTH: <%= movie.length + ' min'%>
+                Duración: <%= movie.length + ' min' %>
             </p>
             <p>
-                RELEASE DATE: <%= movie.releaseDate %>
+                Fecha de estreno: <%= movie.releaseDate %>
+            </p>
+            <p>
+                Género: <%= movie.genre ? movie.genre.name : 'No asignado' %>
+            </p>
+            <p>
+                Actores:
+                <ul>
+                    <% for (i = 0 ; i < movie.actors.length ; i++) { %>
+                        <a class="cool-link" href="/actors/detail/<%= movie.actors[i].id %>">
+                            <li class="indentate-me">
+                                <%= movie.actors[i].firstName + ' ' + movie.actors[i].lastName %>
+                            </li>
+                        </a>
+                    <% } %>
+                </ul>
             </p>
         </div>
         <div class="box-me control-box">

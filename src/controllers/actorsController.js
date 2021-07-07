@@ -2,7 +2,7 @@ let db = require('../database/models');
 
 let actorsController = {
     list: (req,res) => {
-        db.actors.findAll()
+        db.Actor.findAll()
         .then(actors => {
             res.render('./actors/index', {
                 title: 'Listado de actores',
@@ -15,7 +15,9 @@ let actorsController = {
     },
 
     show: (req,res) => {
-        db.actors.findByPk(req.params.id)
+        db.Actor.findByPk(req.params.id, {
+            include: [ 'movies' ]
+        })
         .then(actor => {
             res.render('./actors/detail', {
                 title: actor.firstName + ' ' + actor.lastName,

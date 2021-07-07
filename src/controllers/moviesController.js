@@ -1,10 +1,9 @@
 let db = require('../database/models')
 let { validationResult } = require('express-validator');
-const { response } = require('express');
 
 let moviesController = {
     list: (req,res) => {
-        db.movies.findAll()
+        db.Movie.findAll()
         .then(movies => {
             res.render('./movies/index', {
                 title: 'Listado de Películas',
@@ -17,7 +16,9 @@ let moviesController = {
     },
     
     show: (req,res) => {
-        db.movies.findByPk(req.params.id)
+        db.Movie.findByPk(req.params.id, {
+            include: [ 'genre', 'actors' ]
+        })
         .then(movie => {
             res.render('./movies/detail', {
                 title: movie.title,
@@ -30,7 +31,7 @@ let moviesController = {
     },
 
     newest: (req,res) => {
-        db.movies.findAll({
+        db.Movie.findAll({
             order: [
                 ['releaseDate', 'DESC']
             ],
@@ -48,7 +49,7 @@ let moviesController = {
     },
 
     recommended: (req,res) => {
-        db.movies.findAll({
+        db.Movie.findAll({
             order: [
                 ['rating', 'DESC']
             ],
@@ -66,8 +67,15 @@ let moviesController = {
     },
 
     create: (req,res) => {
-        res.render('./movies/create', {
-            title: 'Agregar película'
+        db.Genre.findAll()
+        .then(genres => {
+            res.render('./movies/create', {
+                title: 'Agregar película',
+                genres
+            });
+        })
+        .catch(err => {
+            res.send(err);
         });
     },
 
@@ -81,12 +89,13 @@ let moviesController = {
                 errors: validations.mapped()
             });
         } else {
-            return db.movies.create({
+            return db.Movie.create({
                 title: req.body.title,
                 rating: parseInt(req.body.rating),
                 awards: parseInt(req.body.awards),
                 releaseDate: req.body.releaseDate,
-                length: parseInt(req.body.lengt)
+                length: parseInt(req.body.length),
+                genreId: req.body.genre
             })
             .then(() => {
                 res.redirect('/movies');
@@ -98,7 +107,7 @@ let moviesController = {
     },
 
     edit: (req,res) => {
-        db.movies.findByPk(req.params.id)
+        db.Movie.findByPk(req.params.id)
         .then(movie => {
             res.render('./movies/edit', {
                 title: 'Editar' + ' ' + movie.title,
@@ -111,19 +120,22 @@ let moviesController = {
     },
     
     update: (req,res) => {
-        // let validations = validationResult(req);
-        // if (validations.errors.length > 0) {
-        //     return res.render('./movies/edit', {
-        //         title: 'Editar' + movie.title,
-        //         errors: validations.mapped()
-        //     });
-        // } else {
-            return db.movies.update({
+        let validations = validationResult(req);
+        let oldData = req.body;
+        let param = req.params.id;
+        if (validations.errors.length > 0) {
+            return res.render('./movies/edit', {
+                oldData,
+                param,
+                title: 'Editar' + ' ' + oldData.title,
+                errors: validations.mapped()
+            });
+        } else {
+            return db.Movie.update({
                 title: req.body.title,
-                rating: req.body.rating,
-                awards: req.body.awards,
-                releaseDate: req.body.releaseDate,
-                length: req.body.length
+                rating: parseInt(req.body.rating),
+                awards: parseInt(req.body.awards),
+                length: parseInt(req.body.length)
             }, {
                 where: {
                     id: req.params.id
@@ -135,11 +147,11 @@ let moviesController = {
             .catch(err => {
                 res.send(err);
             });
-        // };
+        };
     },
 
     destroy: (req,res) => {
-        db.movies.destroy({
+        db.Movie.destroy({
             where: {
                 id: req.params.id
             }

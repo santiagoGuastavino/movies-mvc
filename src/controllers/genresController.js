@@ -2,7 +2,7 @@ let db = require('../database/models');
 
 let genresController = {
     list: (req,res) => {
-        db.genres.findAll()
+        db.Genre.findAll()
         .then(genres => {
             res.render('./genres/index', {
                 title: 'Listado de géneros',
@@ -15,7 +15,7 @@ let genresController = {
     },
 
     show: (req,res) => {
-        db.genres.findByPk(req.params.id)
+        db.Genre.findByPk(req.params.id)
         .then(genre => {
             res.render('./genres/detail', {
                 title: genre.title,

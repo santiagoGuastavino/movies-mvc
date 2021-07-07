@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    let alias = 'actors';
+    let alias = 'Actor';
     let cols = {
         id: {
             autoIncrement: true,
@@ -38,6 +38,21 @@ module.exports = (sequelize, DataTypes) => {
             collate: 'utf8mb4_unicode:ci'
         }
     };
-    let Actor = sequelize.define(alias,cols,config);
-    return Actor
+    let Actor = sequelize.define(
+        alias,
+        cols,
+        config
+        );
+    Actor.associate = (model) => {
+        // each actor has acted in many movies
+        // and each movie has many actors
+        Actor.belongsToMany(model.Movie, {
+            as: 'movies',
+            through: 'actor_movie',
+            foreignKey: 'actor_id',
+            otherKey: 'movie_id',
+            timestamps: false
+        });
+    };
+    return Actor;
 };

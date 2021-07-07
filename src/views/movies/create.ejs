@@ -116,6 +116,23 @@
                     </p>
                 </div>
                 <div class="box-me">
+                    <label for="genre">
+                        Género
+                    </label>
+                    <p>
+                        <select name="genre" id="genre">
+                            <option value="undefined" disabled selected>
+                                
+                            </option>
+                            <% for (i = 0; i < genres.length; i++) { %>
+                            <option value="<%= genres[i].id %>">
+                                <%= genres[i].name %>
+                            </option>
+                            <% } %>
+                        </select>
+                    </p>
+                </div>
+                <div class="box-me">
                     <p>
                         <button class="submit-button" type="submit">
                             Agregar
