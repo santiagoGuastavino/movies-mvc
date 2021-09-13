@@ -1,12 +1,13 @@
-Movies
+[Movies](https://tomates-podridos.herokuapp.com/)
 ---
-_Object relational mapper & API rest_
+
+_Object relational mapper & REST API_
 <h3>For this project I used:</h3>  
 
 - [Sequelize ORM](https://sequelize.org/)
-- [Express Node.js framework](https://expressjs.com/)
-- [ejs template engine](https://ejs.co/)
-- [express-validator](https://www.npmjs.com/package/express-validator)
-- MVC practices.
+- [Express.js](https://expressjs.com/)
+- REST API
+- Model View Controller best practices
+- MySQL
 
-It was achieved by following steps provided by the [Coding Academy](https://www.digitalhouse.com/) I'm being tutored by.
+This app was developed following steps provided by the [Coding Academy](https://www.digitalhouse.com/) I was tutored by, and deployed to Heroku with [ClearDB addon](https://elements.heroku.com/addons/cleardb).
