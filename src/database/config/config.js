@@ -1,10 +1,9 @@
-require('dotenv').config();
 module.exports = {
   "development": {
-    "username": process.env.DB_USERNAME,
-    "password": process.env.DB_PASSWORD,
-    "database": process.env.DB_DATABASE,
-    "host": process.env.DB_HOST,
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
@@ -15,10 +14,10 @@ module.exports = {
     "dialect": "mysql"
   },
   "production": {
-    "username": process.env.DB_USERNAME,
-    "password": process.env.DB_PASSWORD,
-    "database": process.env.DB_DATABASE,
-    "host": process.env.DB_HOST,
+    "username": "be08f811240863",
+    "password": "eb5a9e14",
+    "database": "heroku_c13477a0d22e9b2",
+    "host": "us-cdbr-east-04.cleardb.com",
     "dialect": "mysql"
   }
 };

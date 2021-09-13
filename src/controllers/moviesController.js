@@ -11,7 +11,7 @@ let moviesController = {
             });
         })
         .catch(err => {
-            res.json(err)
+            res.send(err);
         });
     },
     
