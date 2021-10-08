@@ -1,4 +1,4 @@
-[Movies](https://tomates-podridos.herokuapp.com/)
+[Movies](https://smg-movies.herokuapp.com/)
 ---
 
 _Object relational mapper & REST API_
