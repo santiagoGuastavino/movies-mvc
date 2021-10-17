@@ -5,7 +5,7 @@ _Object relational mapper & REST API_
 <h3>For this project I used:</h3>  
 
 - [Express.js](https://expressjs.com/)
-- REST API Interface
+- REST API
 - Model View Controller best practices
 - MySQL
 - [Sequelize ORM](https://sequelize.org/)
