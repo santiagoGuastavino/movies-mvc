@@ -10,4 +10,5 @@ _Object relational mapper & REST API_
 - MySQL
 - [Sequelize ORM](https://sequelize.org/)
 
-This web app was developed following steps provided by the [Coding Academy](https://www.digitalhouse.com/) I was tutored by, and deployed to [Heroku](https://devcenter.heroku.com/start). It has a [ClearDB addon](https://elements.heroku.com/addons/cleardb) instance that hosts a remote MySQL Database.
+This web app was deployed to [Heroku](https://devcenter.heroku.com/start).  
+It has a [ClearDB addon](https://elements.heroku.com/addons/cleardb) instance, that hosts a remote MySQL Database.
