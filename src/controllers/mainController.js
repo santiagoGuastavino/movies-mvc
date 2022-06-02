@@ -1,9 +1,9 @@
-let mainController = {
-    index: (req,res) => {
-        res.render('index', {
-            title: 'Movies'
-        });
-    },
-};
+const mainController = {
+  index: (req, res) => {
+    res.render('index', {
+      title: 'Movies'
+    })
+  }
+}
 
-module.exports = mainController;
+module.exports = mainController

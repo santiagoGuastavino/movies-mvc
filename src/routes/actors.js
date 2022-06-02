@@ -1,8 +1,8 @@
-let express = require('express');
-let router = express.Router();
-let actorsController = require('../controllers/actorsController');
+const express = require('express')
+const router = express.Router()
+const actorsController = require('../controllers/actorsController')
 
-router.get('/', actorsController.list);
-router.get('/detail/:id', actorsController.show);
+router.get('/', actorsController.list)
+router.get('/detail/:id', actorsController.show)
 
-module.exports = router;
+module.exports = router

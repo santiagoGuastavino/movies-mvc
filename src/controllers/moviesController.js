@@ -1,168 +1,168 @@
-let db = require('../database/models')
-let { validationResult } = require('express-validator');
+const db = require('../database/models')
+const { validationResult } = require('express-validator')
 
-let moviesController = {
-    list: (req,res) => {
-        db.Movie.findAll()
-        .then(movies => {
-            res.render('./movies/index', {
-                title: 'Listado de Películas',
-                movies
-            });
+const moviesController = {
+  list: (req, res) => {
+    db.Movie.findAll()
+      .then(movies => {
+        res.render('./movies/index', {
+          title: 'Listado de Películas',
+          movies
         })
-        .catch(err => {
-            res.send(err);
-        });
-    },
-    
-    show: (req,res) => {
-        db.Movie.findByPk(req.params.id, {
-            include: [ 'genre', 'actors' ]
-        })
-        .then(movie => {
-            res.render('./movies/detail', {
-                title: movie.title,
-                movie
-            });
-        })
-        .catch(err => {
-            res.send(err);
-        });
-    },
+      })
+      .catch(err => {
+        res.send(err)
+      })
+  },
 
-    newest: (req,res) => {
-        db.Movie.findAll({
-            order: [
-                ['releaseDate', 'DESC']
-            ],
-            limit: 5
+  show: (req, res) => {
+    db.Movie.findByPk(req.params.id, {
+      include: ['genre', 'actors']
+    })
+      .then(movie => {
+        res.render('./movies/detail', {
+          title: movie.title,
+          movie
         })
-        .then(movies => {
-            res.render('./movies/newest', {
-                title: 'Películas más nuevas',
-                movies
-            });
-        })
-        .catch(err => {
-            res.send(err);
-        });
-    },
+      })
+      .catch(err => {
+        res.send(err)
+      })
+  },
 
-    recommended: (req,res) => {
-        db.Movie.findAll({
-            order: [
-                ['rating', 'DESC']
-            ],
-            limit: 5
+  newest: (req, res) => {
+    db.Movie.findAll({
+      order: [
+        ['releaseDate', 'DESC']
+      ],
+      limit: 5
+    })
+      .then(movies => {
+        res.render('./movies/newest', {
+          title: 'Películas más nuevas',
+          movies
         })
-        .then(movies => {
-            res.render('./movies/recommended', {
-                title: 'Peliculas recomendadas',
-                movies
-            });
-        })
-        .catch(err => {
-            res.send(err)
-        });
-    },
+      })
+      .catch(err => {
+        res.send(err)
+      })
+  },
 
-    create: (req,res) => {
-        db.Genre.findAll()
-        .then(genres => {
-            res.render('./movies/create', {
-                title: 'Agregar película',
-                genres
-            });
+  recommended: (req, res) => {
+    db.Movie.findAll({
+      order: [
+        ['rating', 'DESC']
+      ],
+      limit: 5
+    })
+      .then(movies => {
+        res.render('./movies/recommended', {
+          title: 'Peliculas recomendadas',
+          movies
         })
-        .catch(err => {
-            res.send(err);
-        });
-    },
+      })
+      .catch(err => {
+        res.send(err)
+      })
+  },
 
-    store: (req,res) => {
-        let validations = validationResult(req);
-        let oldData = req.body;
-        if (validations.errors.length > 0) {
-            return res.render('./movies/create', {
-                title: 'Agregar película',
-                oldData,
-                errors: validations.mapped()
-            });
-        } else {
-            return db.Movie.create({
-                title: req.body.title,
-                rating: parseInt(req.body.rating),
-                awards: parseInt(req.body.awards),
-                releaseDate: req.body.releaseDate,
-                length: parseInt(req.body.length),
-                genreId: req.body.genre
-            })
-            .then(() => {
-                res.redirect('/movies');
-            })
-            .catch(err => {
-                res.send(err);
-            });
-        };
-    },
-
-    edit: (req,res) => {
-        db.Movie.findByPk(req.params.id)
-        .then(movie => {
-            res.render('./movies/edit', {
-                title: 'Editar' + ' ' + movie.title,
-                movie
-            });
+  create: (req, res) => {
+    db.Genre.findAll()
+      .then(genres => {
+        res.render('./movies/create', {
+          title: 'Agregar película',
+          genres
         })
-        .catch(err => {
-            res.send(err);
-        });
-    },
-    
-    update: (req,res) => {
-        let validations = validationResult(req);
-        let oldData = req.body;
-        let param = req.params.id;
-        if (validations.errors.length > 0) {
-            return res.render('./movies/edit', {
-                oldData,
-                param,
-                title: 'Editar' + ' ' + oldData.title,
-                errors: validations.mapped()
-            });
-        } else {
-            return db.Movie.update({
-                title: req.body.title,
-                rating: parseInt(req.body.rating),
-                awards: parseInt(req.body.awards),
-                length: parseInt(req.body.length)
-            }, {
-                where: {
-                    id: req.params.id
-                }
-            })
-            .then(() => {
-                res.redirect('/movies');
-            })
-            .catch(err => {
-                res.send(err);
-            });
-        };
-    },
+      })
+      .catch(err => {
+        res.send(err)
+      })
+  },
 
-    destroy: (req,res) => {
-        db.Movie.destroy({
-            where: {
-                id: req.params.id
-            }
-        })
+  store: (req, res) => {
+    const validations = validationResult(req)
+    const oldData = req.body
+    if (validations.errors.length > 0) {
+      return res.render('./movies/create', {
+        title: 'Agregar película',
+        oldData,
+        errors: validations.mapped()
+      })
+    } else {
+      return db.Movie.create({
+        title: req.body.title,
+        rating: parseInt(req.body.rating),
+        awards: parseInt(req.body.awards),
+        releaseDate: req.body.releaseDate,
+        length: parseInt(req.body.length),
+        genreId: req.body.genre
+      })
         .then(() => {
-            res.redirect('/movies');
+          res.redirect('/movies')
         })
         .catch(err => {
-            res.send(err);
-        });
-    },
-};
+          res.send(err)
+        })
+    };
+  },
 
-module.exports = moviesController;
+  edit: (req, res) => {
+    db.Movie.findByPk(req.params.id)
+      .then(movie => {
+        res.render('./movies/edit', {
+          title: 'Editar' + ' ' + movie.title,
+          movie
+        })
+      })
+      .catch(err => {
+        res.send(err)
+      })
+  },
+
+  update: (req, res) => {
+    const validations = validationResult(req)
+    const oldData = req.body
+    const param = req.params.id
+    if (validations.errors.length > 0) {
+      return res.render('./movies/edit', {
+        oldData,
+        param,
+        title: 'Editar' + ' ' + oldData.title,
+        errors: validations.mapped()
+      })
+    } else {
+      return db.Movie.update({
+        title: req.body.title,
+        rating: parseInt(req.body.rating),
+        awards: parseInt(req.body.awards),
+        length: parseInt(req.body.length)
+      }, {
+        where: {
+          id: req.params.id
+        }
+      })
+        .then(() => {
+          res.redirect('/movies')
+        })
+        .catch(err => {
+          res.send(err)
+        })
+    };
+  },
+
+  destroy: (req, res) => {
+    db.Movie.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(() => {
+        res.redirect('/movies')
+      })
+      .catch(err => {
+        res.send(err)
+      })
+  }
+}
+
+module.exports = moviesController
