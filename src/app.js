@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const path = require('path')
@@ -23,11 +24,5 @@ app.use('/movies', moviesRouter)
 app.use('/genres', genresRouter)
 app.use('/actors', actorsRouter)
 
-const moviesApiRouter = require('./routes/api/movies')
-
-app.use('/api/movies', moviesApiRouter)
-
-const PORT = process.env.PORT || 3001
-const server = app.listen(PORT, () => console.log(`Serving @ ${PORT}`))
-
-module.exports = { app, server }
+const PORT = process.env.PORT
+app.listen(PORT, () => console.log(`Serving @ ${PORT}`))

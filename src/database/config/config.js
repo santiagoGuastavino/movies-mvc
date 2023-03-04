@@ -1,9 +1,9 @@
 module.exports = {
   development: {
-    username: 'root',
+    username: process.env.DB_USERNAME,
     password: null,
-    database: 'movies_db',
-    host: '127.0.0.1',
+    database: process.env.DB_NAME,
+    host: process.env.DB_SERVER,
     dialect: 'mysql'
   },
   test: {
@@ -14,10 +14,10 @@ module.exports = {
     dialect: 'mysql'
   },
   production: {
-    username: 'be08f811240863',
-    password: 'eb5a9e14',
-    database: 'heroku_c13477a0d22e9b2',
-    host: 'us-cdbr-east-04.cleardb.com',
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    host: process.env.DB_SERVER,
     dialect: 'mysql'
   }
 }
